@@ -1,0 +1,186 @@
+<!-- RegistroForm.vue -->
+<template>
+  <form @submit.prevent="handleSubmit" style="max-width: 600px; margin: 0 auto; font-family: Arial">
+    <h2>Registro de Usuario</h2>
+
+    <div style="margin-bottom: 15px">
+      <label><strong>Nombre completo *</strong></label>
+      <input
+        v-model="formData.nombre"
+        type="text"
+        @blur="markTouched('nombre')"
+        style="width: 100%; padding: 8px; box-sizing: border-box"
+      />
+      <div v-if="errors.nombre" style="color: red; font-size: 0.9em">{{ errors.nombre }}</div>
+    </div>
+
+    <div style="margin-bottom: 15px">
+      <label><strong>Correo electrónico *</strong></label>
+      <input
+        v-model="formData.email"
+        type="email"
+        @blur="markTouched('email')"
+        style="width: 100%; padding: 8px; box-sizing: border-box"
+      />
+      <div v-if="errors.email" style="color: red; font-size: 0.9em">{{ errors.email }}</div>
+    </div>
+
+    <div style="margin-bottom: 15px">
+      <label><strong>Contraseña *</strong></label>
+      <input
+        v-model="formData.password"
+        type="password"
+        @blur="markTouched('password')"
+        style="width: 100%; padding: 8px; box-sizing: border-box"
+      />
+      <div v-if="errors.password" style="color: red; font-size: 0.9em">{{ errors.password }}</div>
+    </div>
+
+    <div style="margin-bottom: 15px">
+      <label><strong>Confirmar contraseña *</strong></label>
+      <input
+        v-model="formData.confirmPassword"
+        type="password"
+        @blur="markTouched('confirmPassword')"
+        style="width: 100%; padding: 8px; box-sizing: border-box"
+      />
+      <div v-if="errors.confirmPassword" style="color: red; font-size: 0.9em">{{ errors.confirmPassword }}</div>
+    </div>
+
+    <div style="margin-bottom: 15px">
+      <label><strong>Fecha de nacimiento</strong></label>
+      <input
+        v-model="formData.fechaNacimiento"
+        type="date"
+        @blur="markTouched('fechaNacimiento')"
+        style="width: 100%; padding: 8px; box-sizing: border-box"
+      />
+      <div v-if="errors.fechaNacimiento" style="color: red; font-size: 0.9em">{{ errors.fechaNacimiento }}</div>
+    </div>
+
+    <div style="margin-bottom: 15px">
+      <label><strong>Género</strong></label>
+      <select v-model="formData.genero" style="width: 100%; padding: 8px; box-sizing: border-box">
+        <option value="">Selecciona...</option>
+        <option value="masculino">Masculino</option>
+        <option value="femenino">Femenino</option>
+        <option value="otro">Otro</option>
+        <option value="no-especificar">Prefiero no decirlo</option>
+      </select>
+    </div>
+
+    <div style="margin-bottom: 15px">
+      <label><strong>País de residencia *</strong></label>
+      <select
+        v-model="formData.pais"
+        @blur="markTouched('pais')"
+        style="width: 100%; padding: 8px; box-sizing: border-box"
+      >
+        <option value="">Selecciona tu país</option>
+        <option value="AR">Argentina</option>
+        <option value="BO">Bolivia</option>
+        <option value="BR">Brasil</option>
+        <option value="CL">Chile</option>
+        <option value="CO">Colombia</option>
+        <option value="CR">Costa Rica</option>
+        <option value="EC">Ecuador</option>
+        <option value="ES">España</option>
+        <option value="MX">México</option>
+        <option value="PE">Perú</option>
+        <option value="UY">Uruguay</option>
+        <option value="VE">Venezuela</option>
+      </select>
+      <div v-if="errors.pais" style="color: red; font-size: 0.9em">{{ errors.pais }}</div>
+    </div>
+
+    <div style="margin-bottom: 15px">
+      <label>
+        <input
+          type="checkbox"
+          v-model="formData.terminos"
+          @blur="markTouched('terminos')"
+        />
+        Acepto los <a href="#" target="_blank">términos y condiciones</a> *
+      </label>
+      <div v-if="errors.terminos" style="color: red; font-size: 0.9em">{{ errors.terminos }}</div>
+    </div>
+
+    <button type="submit" style="padding: 10px 20px">Registrarse</button>
+  </form>
+</template>
+
+<script setup>
+import { ref, reactive } from 'vue';
+
+const formData = reactive({
+  nombre: '',
+  email: '',
+  password: '',
+  confirmPassword: '',
+  fechaNacimiento: '',
+  genero: '',
+  pais: '',
+  terminos: false
+});
+
+const errors = reactive({});
+const touched = reactive({});
+
+// Expresiones regulares
+const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+const regexNombre = /^[a-zA-ZÀ-ÿ\s]{2,50}$/;
+
+const validateField = (name, value) => {
+  switch (name) {
+    case 'nombre': return value.trim().length >= 2 && regexNombre.test(value.trim());
+    case 'email': return regexEmail.test(value.trim());
+    case 'password': return regexPassword.test(value);
+    case 'confirmPassword': return value === formData.password;
+    case 'fechaNacimiento':
+      if (!value) return true;
+      const date = new Date(value);
+      const today = new Date();
+      return date < today && date.getFullYear() >= 1900;
+    case 'pais': return value !== '';
+    case 'terminos': return value;
+    default: return true;
+  }
+};
+
+const getErrorMessage = (name) => {
+  const messages = {
+    nombre: 'Nombre inválido (solo letras y espacios, 2-50 caracteres).',
+    email: 'Correo electrónico inválido.',
+    password: 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.',
+    confirmPassword: 'Las contraseñas no coinciden.',
+    fechaNacimiento: 'Fecha de nacimiento inválida.',
+    pais: 'Selecciona tu país.',
+    terminos: 'Debes aceptar los términos y condiciones.'
+  };
+  return messages[name] || '';
+};
+
+const markTouched = (field) => {
+  touched[field] = true;
+  errors[field] = validateField(field, formData[field]) ? '' : getErrorMessage(field);
+};
+
+const handleSubmit = () => {
+  // Marcar todos como tocados
+  Object.keys(formData).forEach(key => touched[key] = true);
+
+  // Validar todos
+  let isValid = true;
+  Object.keys(formData).forEach(key => {
+    const valid = validateField(key, formData[key]);
+    errors[key] = valid ? '' : getErrorMessage(key);
+    if (!valid) isValid = false;
+  });
+
+  if (isValid) {
+    alert('¡Registro exitoso!');
+    // Enviar formData al backend
+  }
+};
+</script>

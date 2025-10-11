@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Curiosidades sobre Boulder en la Comunidad Valenciana</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f8f9fa;
+      color: #333;
+    }
+    header h1 {
+      color: #2c3e50;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    header p {
+      text-align: center;
+      color: #7f8c8d;
+      margin-bottom: 30px;
+    }
+    section {
+      margin-bottom: 40px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #e74c3c;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 8px;
+    }
+    ul, ol {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    a {
+      color: #3498db;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #f1c40f;
+      color: #2c3e50;
+    }
+    tr:nth-child(even) {
+      background-color: #fcfcfc;
+    }
+
+    /* Mapa */
+    #mapa {
+      height: 300px;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    /* Formulario de suscripción */
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="email"] {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+      margin-top: 5px;
+    }
+    button {
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #c0392b;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 0.9em;
+      color: #7f8c8d;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>10 Curiosidades sobre Escalada en Boulder</h1>
+    <p><em>Equipamiento esencial y los mejores lugares en la Comunidad Valenciana</em></p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Curiosidades generales y de equipamiento</h2>
+      <ol>
+        <li>El término <strong>"boulder"</strong> proviene del inglés y significa "roca grande". Se practica en bloques bajos (<5 m) sin cuerdas, usando solo un <em>crash pad</em>.</li>
+        <li>El primer problema de boulder de grado <strong>9A (V17)</strong> fue <em>Burden of Dreams</em> (Finlandia, 2016).</li>
+        <li>Las <strong>zapatillas de boulder</strong> son más ajustadas y simétricas que las de escalada deportiva para mayor precisión.</li>
+        <li>La <strong>tiza (magnesio)</strong> mejora el agarre al aumentar la fricción; existen versiones líquidas más ecológicas.</li>
+        <li>El <strong>crash pad ideal</strong> tiene al menos 10 cm de espuma de alta densidad y sistema de transporte tipo mochila.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Mejores zonas en la Comunidad Valenciana</h2>
+      <ul>
+        <li>El <strong>macizo del Garbí (Valencia)</strong> es la "mecca" del boulder valenciano, con más de 800 problemas en caliza de alta calidad.</li>
+        <li>En la Comunidad Valenciana está <strong>prohibido usar talco o resina</strong> en zonas naturales; solo se permite magnesio blanco.</li>
+        <li>El <strong>Parque Natural del Penyagolosa (Castellón)</strong> alberga sectores emergentes como <em>Les Travesses</em>, con arenisca única.</li>
+        <li>El <strong>primer festival de boulder valenciano</strong> se celebró en 2010 en Chulilla y hoy reúne a cientos de escaladores.</li>
+        <li>Existe una <strong>guía oficial digital</strong> gestionada por la <a href="https://www.fdmcv.es" target="_blank">Federación de Montañismo de la CV</a>, con sectores actualizados y normas de acceso.</li>
+      </ul>
+
+      <h3>Mapa de los mejores sectores</h3>
+      <div id="mapa"></div>
+    </section>
+
+    <section>
+      <h2>Resumen: Equipamiento esencial para boulder</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Elemento</th>
+            <th>Función</th>
+            <th>Recomendación</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Zapatillas de boulder</td>
+            <td>Precisión en presas pequeñas</td>
+            <td>Ajustadas, sin refuerzos rígidos</td>
+          </tr>
+          <tr>
+            <td>Crash pad</td>
+            <td>Amortiguar caídas</td>
+            <td>Mín. 10 cm de espuma, cierre tipo mochila</td>
+          </tr>
+          <tr>
+            <td>Magnesio</td>
+            <td>Absorber sudor y mejorar agarre</td>
+            <td>Polvo blanco o líquido (prohibido talco)</td>
+          </tr>
+          <tr>
+            <td>Cepillo</td>
+            <td>Limpiar presas de polvo</td>
+            <td>Con correa para muñeca</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>¿Quieres recibir novedades de rutas y eventos?</h2>
+      <p>Suscríbete para estar al día con nuevos sectores, festivales y consejos de escalada en la Comunidad Valenciana.</p>
+
+      <form id="suscripcionForm" novalidate>
+        <div class="form-group">
+          <label for="nombreSus">Nombre completo *</label>
+          <input type="text" id="nombreSus" name="nombre" required>
+          <div class="error" id="error-nombreSus"></div>
+        </div>
+        <div class="form-group">
+          <label for="emailSus">Correo electrónico *</label>
+          <input type="email" id="emailSus" name="email" required>
+          <div class="error" id="error-emailSus"></div>
+        </div>
+        <button type="submit">Suscribirme</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>Fuentes: 
+      <a href="https://www.fdmcv.es" target="_blank">Federación de Montañismo CV</a> | 
+      <a href="https://penyagolosa.gva.es" target="_blank">Parque Natural Penyagolosa</a> | 
+      <a href="https://www.8a.nu" target="_blank">8a.nu</a> | 
+      Guía "Boulder Valencia" (Desnivel, 2023)
+    </p>
+    <p>Contenido generado con apoyo de inteligencia artificial y verificado con fuentes locales.</p>
+  </footer>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // Inicializar mapa
+    const map = L.map('mapa').setView([39.5, -0.6], 9); // Centro en Comunidad Valenciana
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Marcadores
+    const sitios = [
+      { nombre: "Garbí (Valencia)", lat: 39.4750, lng: -0.3772, desc: "Más de 800 problemas en caliza." },
+      { nombre: "Chulilla (Valencia)", lat: 39.6333, lng: -1.0333, desc: "Festival anual de boulder y escalada." },
+      { nombre: "Penyagolosa (Castellón)", lat: 40.2667, lng: -0.2833, desc: "Sectores emergentes en arenisca." }
+    ];
+
+    sitios.forEach(s => {
+      L.marker([s.lat, s.lng])
+        .addTo(map)
+        .bindPopup(`<b>${s.nombre}</b><br>${s.desc}`);
+    });
+  </script>
+
+  <script>
+    // Validación del formulario de suscripción
+    const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const regexNombre = /^[a-zA-ZÀ-ÿ\s]{2,50}$/;
+
+    function setError(id, msg) {
+      document.getElementById(`error-${id}`).textContent = msg;
+    }
+    function clearError(id) {
+      setError(id, '');
+    }
+
+    const form = document.getElementById('suscripcionForm');
+    const nombreInput = document.getElementById('nombreSus');
+    const emailInput = document.getElementById('emailSus');
+
+    nombreInput.addEventListener('blur', () => {
+      const val = nombreInput.value.trim();
+      if (!val || !regexNombre.test(val)) {
+        setError('nombreSus', 'Nombre inválido (solo letras y espacios, 2-50 caracteres).');
+      } else {
+        clearError('nombreSus');
+      }
+    });
+
+    emailInput.addEventListener('blur', () => {
+      const val = emailInput.value.trim();
+      if (!val || !regexEmail.test(val)) {
+        setError('emailSus', 'Correo electrónico inválido.');
+      } else {
+        clearError('emailSus');
+      }
+    });
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      let valido = true;
+
+      const nombre = nombreInput.value.trim();
+      const email = emailInput.value.trim();
+
+      if (!nombre || !regexNombre.test(nombre)) {
+        setError('nombreSus', 'Nombre inválido (solo letras y espacios, 2-50 caracteres).');
+        valido = false;
+      } else {
+        clearError('nombreSus');
+      }
+
+      if (!email || !regexEmail.test(email)) {
+        setError('emailSus', 'Correo electrónico inválido.');
+        valido = false;
+      } else {
+        clearError('emailSus');
+      }
+
+      if (valido) {
+        alert(`¡Gracias, ${nombre}! Te mantendremos informado sobre novedades de boulder en la Comunidad Valenciana.`);
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>
