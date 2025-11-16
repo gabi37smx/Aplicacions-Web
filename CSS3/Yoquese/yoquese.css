@@ -1,0 +1,15 @@
+body{
+    font-size: 20pt;
+}
+h1 {
+    color:rgb(48, 211, 129);
+    background-color: black;  
+}
+
+.pequeno {
+    font-size: 0.8em;
+}
+
+.grande {
+    font-size: 12em;
+}

@@ -1,0 +1,62 @@
+body {
+  background: #B6EEF0;
+  font-family: 'Gluten', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 12pt;
+  margin: 0;
+  padding: 0;
+  text-align: justify;
+  line-height: 1.2;
+}
+
+.cv-container {
+  max-width: 700px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 14px;
+  padding: 38px 34px;
+  box-shadow: 0 8px 28px #b0b4d650;
+}
+
+h1 {
+  font-family: Arial, sans-serif;
+  font-size: 24pt;
+  color: #0728F6;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+h2 {
+  font-family: Arial, sans-serif;
+  font-size: 20pt;
+  color: #455CED;
+  margin-top: 23px;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+h3 {
+  font-family: Arial, sans-serif;
+  font-size: 16pt;
+  color: #6272D6;
+  margin-top: 20px;
+  margin-bottom: 7px;
+  text-align: left;
+}
+
+b, strong {
+  color: #455CED;
+}
+
+ul {
+  margin-left: 25px;
+  margin-bottom: 17px;
+  padding: 0;
+}
+
+.footer {
+  text-align: right;
+  color: #455CED;
+  font-size: 11pt;
+  margin-top: 40px;
+}

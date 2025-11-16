@@ -1,0 +1,109 @@
+/* Reset básico opcional */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+/* Variables de color para facilitar ajustes (opcional) */
+:root {
+  --bg-dark: #873a23;   /* color de fondo del header/nav */
+  --text-light: #ffffff; /* texto claro en header/nav */
+  --text-dark: #2e1c13;  /* texto principal del contenido */
+  --link: #fff;
+  --hover: #ffd6a0;
+}
+
+/* Header general (si ya lo tienes en tu HTML, mantén o ajusta) */
+header {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  padding: 12px 20px;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+/* Navegación flexible (nav como contenedor principal) */
+nav {
+  background: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* elementos alineados a la derecha en escritorio */
+  padding: 8px 20px;
+  gap: 22px;
+}
+
+nav a {
+  color: var(--text-light);
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 6px 0;
+  transition: color 0.2s ease;
+}
+nav a:hover,
+nav a:focus {
+  color: var(--hover);
+  outline: none;
+}
+
+/* Contenedor principal del contenido para alinear con el layout de la imagen */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 20px;
+}
+
+/* Secciones en la página (p. ej., oferta y novedades) */
+.grid {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+.box, .novedades {
+  border: 1px solid #ad7c69;
+  padding: 24px 22px;
+  border-radius: 8px;
+  background: #fff;
+}
+.box { width: 60%; }
+.novedades { width: 40%; }
+
+/* Títulos dentro de las secciones */
+.box h3, .novedades h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 1.15rem;
+  color: #2e1c13;
+}
+.novedades ul, .box ul {
+  padding-left: 20px;
+  margin: 0;
+  list-style: disc;
+}
+.novedades ul li {
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+
+/* Enlaces (si los hay en el nav) con estilos consistentes */
+a { color: inherit; }
+
+/* Footer opcional para completar el mockup */
+footer {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  padding: 10px 20px;
+  text-align: center;
+  margin-top: 40px;
+  font-size: 0.95rem;
+}
+
+/* Responsivo: en pantallas pequeñas, apilar columnas y ajustar anchos */
+@media (max-width: 800px) {
+  .grid {
+    flex-direction: column;
+  }
+  .box, .novedades {
+    width: 100%;
+  }
+  nav {
+    justify-content: center;
+  }
+}

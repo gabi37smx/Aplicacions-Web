@@ -1,0 +1,37 @@
+#ventana {
+  width: 400px;
+  padding: 30px;
+  border: 2px solid #CCC;
+  margin: 60px auto;
+  background: hsl(0, 0%, 100%);
+  min-height: 250px;
+  position: relative;
+  overflow: hidden; 
+}
+
+#caja1{
+    background-color: rgb(125, 165, 252);
+    width: 50%;
+    height: 100px;
+    text-align: center;
+    margin: 0px 10px 10px 0px;
+    border: solid 2px gray;
+    float:left
+}
+#caja2{
+    background-color: lightyellow;
+    width: 20%;
+    height: 50px;
+    text-align: center;
+    margin: 0px;
+    float: left;
+}
+#caja3{
+    background-color: rgb(243, 121, 84);
+    width: 20%;
+    height: 50px;
+    text-align: center;
+    margin: 0px;
+    border: double 1px black;
+    clear: left;
+}
