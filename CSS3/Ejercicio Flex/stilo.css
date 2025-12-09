@@ -1,0 +1,89 @@
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 15px;
+    color: black;
+    background-color: white;
+    margin: 0;
+}
+
+header {
+    background-color: #84250C;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main {
+    margin: 150px 20%;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+#caja1, #caja2 {
+    background-color: white;
+    padding: 15px 20px;
+    border-radius: 20px;
+    box-shadow: none;
+   
+}
+
+#caja1 {
+    width: 60%;
+    border: solid black 1px;
+}
+
+#caja2 {
+    width: 35%;
+    font-size: small;
+}
+
+footer {
+    background: #84250C;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    font-size: 16px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.volver-btn {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    color: #84250C;
+    font-weight: bold;
+    text-decoration: none;
+}
