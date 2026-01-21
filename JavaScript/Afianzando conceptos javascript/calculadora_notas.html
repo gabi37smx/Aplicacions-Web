@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html llang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de notas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Calculadora de notas</h1>
+
+    <form id="formNotas" method="POST">
+    <label>
+        Nota 1:
+        <input type="number"id="nota1"min="0"max="10"step="0.1">
+    </label>
+    <br><br>
+
+    <label>
+        Nota 2:
+        <input type="number"id="nota2"min="0"max="10"step="0.1">
+    </label>
+    <br><br>
+
+    <label>
+        Nota 3:
+    <input type="number"id="nota3"min="0"max="10"step="0.1">
+    </label>
+    <br><br>
+
+    <button type="button" id="btnCalcular">Calcular nota final</button>
+    <button type="button" id="btnReset">Resetear notas</button>
+    </form>
+
+    <p id="resultado"></p>
+
+    <script>
+    // AQUÍ VA TODO TU CÓDIGO JAVASCRIPT
+            var nota1 = document.getElementById('nota1');
+            var nota2 = document.getElementById('nota2');
+            var nota3 = document.getElementById('nota3');
+            var btnCalcular = document.getElementById('btnCalcular');
+            var resultado = document.getElementById('resultado');
+
+            function showError(msg) {
+            resultado.className = 'error';
+            resultado.textContent = msg;
+            }
+
+            btnCalcular.addEventListener('click', () => {
+            var v1 = nota1.value;
+            var v2 = nota2.value;
+            var v3 = nota3.value;
+
+            // Comprobar campos vacíos
+            if (v1 === '' || v2 === '' || v3 === '') {
+                showError('Error: Rellena las tres notas.');
+                return;
+            }
+
+            var n1 = parseFloat(v1);
+            var n2 = parseFloat(v2);
+            var n3 = parseFloat(v3);
+
+            // Comprobar números válidos y rango 0-10
+            if ([n1, n2, n3].some(n => Number.isNaN(n) || n < 0 || n > 10)) {
+                showError('Error: Las notas deben ser números entre 0 y 10.');
+                return;
+            }
+
+            // Datos válidos: limpiar clases de error
+            resultado.className = '';
+
+            var media = (n1 + n2 + n3) / 3;
+            let clase = '';
+            let texto = '';
+
+            if (media < 5) {
+                clase = 'suspenso';
+                texto = 'Suspenso';
+            } else if (media < 7) {
+                clase = 'aprobado';
+                texto = 'Aprobado';
+            } else if (media < 9) {
+                clase = 'notable';
+                texto = 'Notable';
+            } else {
+                clase = 'sobresaliente';
+                texto = 'Sobresaliente';
+            }
+
+            resultado.classList.add(clase);
+            resultado.textContent = `Nota media: ${media.toFixed(1)} - ${texto}`;
+            });
+          
+            // Botón para resetear las notas y el resultado
+            
+            btnReset.addEventListener('click', () => {
+            nota1.value = '';
+            nota2.value = '';
+            nota3.value = '';
+            resultado.textContent = '';
+            resultado.className = '';
+            nota1.focus();
+            }); 
+    
+    </script>
+</body>
+</html>
