@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html llang="es">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Calculadora de notas</title>
@@ -34,76 +34,62 @@
     <p id="resultado"></p>
 
     <script>
-    // AQUÍ VA TODO TU CÓDIGO JAVASCRIPT
-            var nota1 = document.getElementById('nota1');
-            var nota2 = document.getElementById('nota2');
-            var nota3 = document.getElementById('nota3');
-            var btnCalcular = document.getElementById('btnCalcular');
-            var resultado = document.getElementById('resultado');
-
-            function showError(msg) {
-            resultado.className = 'error';
-            resultado.textContent = msg;
-            }
-
-            btnCalcular.addEventListener('click', () => {
-            var v1 = nota1.value;
-            var v2 = nota2.value;
-            var v3 = nota3.value;
-
-            // Comprobar campos vacíos
-            if (v1 === '' || v2 === '' || v3 === '') {
-                showError('Error: Rellena las tres notas.');
-                return;
-            }
-
-            var n1 = parseFloat(v1);
-            var n2 = parseFloat(v2);
-            var n3 = parseFloat(v3);
-
-            // Comprobar números válidos y rango 0-10
-            if ([n1, n2, n3].some(n => Number.isNaN(n) || n < 0 || n > 10)) {
-                showError('Error: Las notas deben ser números entre 0 y 10.');
-                return;
-            }
-
-            // Datos válidos: limpiar clases de error
-            resultado.className = '';
-
-            var media = (n1 + n2 + n3) / 3;
-            let clase = '';
-            let texto = '';
-
-            if (media < 5) {
-                clase = 'suspenso';
-                texto = 'Suspenso';
-            } else if (media < 7) {
-                clase = 'aprobado';
-                texto = 'Aprobado';
-            } else if (media < 9) {
-                clase = 'notable';
-                texto = 'Notable';
-            } else {
-                clase = 'sobresaliente';
-                texto = 'Sobresaliente';
-            }
-
-            resultado.classList.add(clase);
-            resultado.textContent = `Nota media: ${media.toFixed(1)} - ${texto}`;
-            });
-          
-            // Botón para resetear las notas y el resultado
-            
-            btnReset.addEventListener('click', () => {
-            nota1.value = '';
-            nota2.value = '';
-            nota3.value = '';
-            resultado.textContent = '';
-            resultado.className = '';
-            nota1.focus();
-            }); 
     
+    var nota1 = document.getElementById("nota1");
+    var nota2 = document.getElementById("nota2");
+    var nota3 = document.getElementById("nota3");
+    var btnCalcular = document.getElementById("btnCalcular");
+    var resultado = document.getElementById("resultado");
+
+    btnCalcular.addEventListener ("click", function () {
+        var n1 = parseFloat(nota1.value);
+        var n2 = parseFloat(nota2.value);
+        var n3 = parseFloat(nota3.value);
+
+        if (isNaN(n1) || isNaN(n2) || isNaN(n3)) {
+        resultado.textContent = "Error: Por favor, rellena los tres campos";
+        resultado.className = "error";
+        return;
+        }
+
+        if (n1 < 0 || n1 > 10 || n2 < 0 || n2 > 10 || n3 < 0 || n3 > 10) {
+        resultado.textContent = "Error: introduce notas válidas entre 0 y 10";
+        resultado.className = "error";
+        return;
+        }
+        
+        var media = (n1 + n2 + n3) / 3;
+        var texto = "";
+
+        if (media < 5) {
+            texto = "Suspenso";
+            resultado.className = "suspenso";
+        }
+        else if (media < 7) {
+            texto = "Aprobado";
+            resultado.className = "aprobado";
+        }
+        else if (media < 9) {
+            texto = "Notable";
+            resultado.className = "notable";
+        }
+        else {
+            texto = "Sobresaliente";
+            resultado.className = "sobresaliente";
+        }
+
+        resultado.textContent = "Nota media: " + media.toFixed(1) + " - " + texto;
+    });
+
+    btnReset.addEventListener ("click", function () {
+        nota1.value = "";
+        nota2.value = "";
+        nota3.value = "";
+        resultado.textContent = "";
+    })
+
     </script>
 </body>
 <a href=".././Index.html" class="volver-btn">Volver al índice</a>
 </html>
+
