@@ -1,26 +1,80 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="author" content="Gabriel Vidal">
-        <meta name="description" content="Clases de APW 2do curso - SMR">
-        <title>DOM</title>
-    </head>
-    <body>
-       <header>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Gabriel Vidal">
+    <meta name="description" content="Clases de APW 2do curso - SMR">
+    <title>Pruebas DOM</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        li {
+            background: white;
+            margin: 8px 0;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.15s ease, background 0.2s;
+        }
+
+        li:hover {
+            transform: scale(1.02);
+            background: #e8f0ff;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0077cc;
+            font-weight: bold;
+        }
+
+        .volver-btn {
+            display: block;
+            width: fit-content;
+            margin: 30px auto;
+            padding: 10px 20px;
+            background: #0077cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .volver-btn:hover {
+            background: #005fa3;
+        }
+    </style>
+</head>
+
+<body>
+
     <h1>Pruebas DOM</h1>
-     </header>
-     <section class="section">
-         <ul>
-            <li><a href="pruebaDOM.html">Prueba 1 DOM</a></li>
-            <li><a href="pruebaDOM2.html">Prueba 2 DOM</a></li>
-            <li><a href="pruebaDOM3.html">Prueba 3 DOM</a></li>
-         </ul>
-     </section>
-    </body>
-   <a href="./../Index.html" class="volver-btn">Volver al índice</a>
+
+    <ul>
+        <li><a href="pruebaDOM.html">Prueba 1 DOM</a></li>
+        <li><a href="pruebaDOM2.html">Prueba 2 DOM</a></li>
+        <li><a href="pruebaDOM3.html">Prueba 3 DOM</a></li>
+    </ul>
+
+    <a href="../index.html" class="volver-btn">Volver al índice</a>
+
+</body>
 </html>
-
-
-
 
