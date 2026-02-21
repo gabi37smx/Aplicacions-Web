@@ -1,0 +1,26 @@
+.valido{
+    color:green;
+    font-weight: bold;
+}
+
+.no_valido{
+    color:red;
+    font-weight: bold;
+}
+.error {
+    color: purple;
+
+}
+#contador {
+    font-weight: bold;
+}
+    .rojo {
+    color: red;
+}
+    .normal {
+    color: black;
+}
+.oscuro {
+    color: white;
+    background-color: darkblue;
+}

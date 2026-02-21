@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicios pre exámen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>Modo oscuro</h2>
+
+    <input type="checkbox" id="check"> <label> Activar modo oscuro</label>
+
+    <p>Este texto cambiara cuando activemos el modo oscuro</p> 
+
+   <script>
+        // Captura scheckbox document.body
+            const check = document.getElementById("check");
+            const body = document.body;
+                        
+            check.addEventListener("change", function() {
+                if (check.checked) {
+                    body.classList.add("oscuro");
+                } else {
+                    body.classList.remove("oscuro");
+                }
+            });
+   </script>
+
+</body>
+</html>

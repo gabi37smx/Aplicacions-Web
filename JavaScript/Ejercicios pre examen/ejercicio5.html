@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicios pre exámen</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>Pantalla de validación de edad</h2>
+   
+        <label>Introduce tu edad: <input type="number" id="edad" min="0" max="100"></label>
+        <button id="btnEdad">Comprobar la Edad</button>
+   
+   
+    <p id="resultado"></p>
+
+   <script>
+
+        const btnEdad = document.getElementById("btnEdad");
+        const mensaje = document.getElementById("resultado");
+        const edadInput = document.getElementById("edad");
+
+        btnEdad.addEventListener("click", function() {
+
+            mensaje.classList.remove("error", "no_valido", "valido");
+            const valoredad = (edadInput.value);
+
+
+            if (valoredad === "" || isNaN(valoredad)) {
+                mensaje.textContent = "Por favor, introduce una edad válida.";
+                mensaje.classList.add("error");
+                return;
+            } 
+            if (valoredad < 18) {      
+                mensaje.textContent = "Eres menor de edad.";
+                mensaje.classList.add("no_valido");
+            } else {
+                mensaje.textContent = "Eres mayor de edad. Puedes pasar";
+                mensaje.classList.add("valido");
+            };
+        });
+   </script> 
+        
+</body>
+</html>
