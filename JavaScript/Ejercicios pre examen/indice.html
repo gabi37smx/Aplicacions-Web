@@ -5,33 +5,67 @@
     <meta name="author" content="Gabriel Vidal">
     <meta name="description" content="Índice de ejercicios pre-examen">
     <title>Ejercicios Pre-Examen</title>
+
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 40px;
+            background: #f4f4f4;
         }
+
         h1 {
+            text-align: center;
             color: #333;
         }
+
         ul {
-            list-style-type: square;
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 20px auto;
         }
+
+        li {
+            background: white;
+            margin: 8px 0;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.15s ease, background 0.2s;
+        }
+
+        li:hover {
+            transform: scale(1.02);
+            background: #e8f0ff;
+        }
+
         a {
             text-decoration: none;
             color: #0077cc;
+            font-weight: bold;
         }
-        a:hover {
-            text-decoration: underline;
+
+        .volver-btn {
+            display: block;
+            width: fit-content;
+            margin: 30px auto;
+            padding: 10px 20px;
+            background: #0077cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.2s;
         }
-        .volver {
-            margin-top: 30px;
-            display: inline-block;
+
+        .volver-btn:hover {
+            background: #005fa3;
         }
     </style>
 </head>
+
 <body>
 
-    <h1>Índice – Ejercicios Pre-Examen</h1>
+    <h1>Índice – Ejercicios Pre‑Examen</h1>
 
     <ul>
         <li><a href="ejercicio1.html">Ejercicio 1</a></li>
@@ -41,7 +75,8 @@
         <li><a href="ejercicio5.html">Ejercicio 5</a></li>
     </ul>
 
-    <a href="../index.html" class="volver">Volver al índice principal</a>
+    <a href="../index.html" class="volver-btn">Volver al índice principal</a>
 
 </body>
 </html>
+
