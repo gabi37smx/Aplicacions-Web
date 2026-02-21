@@ -1,29 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="author" content="Gabriel Vidal">
-        <meta name="description" content="Clases de APW 2do curso - SMR">
-        <title>Aprendiendo JavaScript</title>
-    </head>
-    <body>
-       <header>
-         <h1>Ejercicios JavaScript</h1>
-       </header>
-       <section class="section">
-         <ul>
-            <li><a href="./4 scripts sencillos/index.html">4 scripts sencillos</a></li>
-            <li><a href="./Ejercicio repaso javascript/Repaso_javascript.html">Ejercicio repaso JavaScript</a></li>
-            <li><a href="./Introduciendo el DOM/">Introduciendo el DOM</a></li>
-            <li><a href="./Calcula la media/calculadora_notas.html">Afianzando Conceptos</a></li>
-            <li><a href="./Panel magico/creativo.html">Panel Mágico</a></li>
-            <li><a href="./Ejercicios pre examen/indice.html">Ejercicios pre-examen</a></li>
-            <li><a href="./Semaforo interactivo/semaforo.html">Semaforo Interactivo</a></li>
-            <li><a href="./Maquina de energia/energia.html">Máquina de energía</a></li> 
-         </ul>
-       </section>
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Gabriel Vidal">
+    <meta name="description" content="Clases de APW 2do curso - SMR">
+    <title>Ejercicios JavaScript</title>
 
-       <a href="../index.html" class="volver-btn">Volver al índice</a>
-    </body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f4f4f4;
+        }
 
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        li {
+            background: white;
+            margin: 8px 0;
+            padding: 12px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.15s ease, background 0.2s;
+        }
+
+        li:hover {
+            transform: scale(1.02);
+            background: #e8f0ff;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0077cc;
+            font-weight: bold;
+        }
+
+        .volver-btn {
+            display: block;
+            width: fit-content;
+            margin: 30px auto;
+            padding: 10px 20px;
+            background: #0077cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
+
+        .volver-btn:hover {
+            background: #005fa3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Ejercicios JavaScript</h1>
+
+    <ul>
+        <li><a href="./4 scripts sencillos/index.html">4 scripts sencillos</a></li>
+        <li><a href="./Ejercicio repaso javascript/Repaso_javascript.html">Ejercicio repaso JavaScript</a></li>
+        <li><a href="./Introduciendo el DOM/index.html">Introduciendo el DOM</a></li>
+        <li><a href="./Calcula la media/calculadora_notas.html">Afianzando Conceptos</a></li>
+        <li><a href="./Panel magico/creativo.html">Panel Mágico</a></li>
+        <li><a href="./Ejercicios pre examen/indice.html">Ejercicios pre-examen</a></li>
+        <li><a href="./Semaforo interactivo/semaforo.html">Semáforo Interactivo</a></li>
+        <li><a href="./Maquina de energia/energia.html">Máquina de energía</a></li>
+    </ul>
+
+    <a href="../index.html" class="volver-btn">Volver al índice</a>
+
+</body>
 </html>
