@@ -7,9 +7,14 @@
     color:red;
     font-weight: bold;
 }
+
+.no_numero{
+    color:blue;
+    font-weight: bold;
+}
+
 .error {
     color: purple;
-
 }
 #contador {
     font-weight: bold;
