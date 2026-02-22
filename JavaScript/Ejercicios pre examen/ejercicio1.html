@@ -31,14 +31,20 @@
         if (texto.length < 3) {
             mensaje.textContent = "El campo está vacío o tiene pocos caracteres";
             mensaje.classList.add("no_valido");
-        } else {
+        } 
+        else if (isNaN(texto) === false) {
+            mensaje.textContent = "El campo no puede ser un número";
+            mensaje.classList.add("no_numero");
+        }       
+        else {
             mensaje.textContent = "Nombre correcto !!";
             mensaje.classList.add("valido");
         }
     });
 </script>
-  
+   
 </body>
     <a href=".././indice.html" class="volver-btn">Volver al índice</a>
 </html>
+
 
